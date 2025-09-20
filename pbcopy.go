@@ -1,6 +1,11 @@
-package main
+package pbcopy
 
-type Copy interface {
-	ReadAll() (string, error)
-	Write(string) (int, error)
+func ReadAll() (string, error) {
+	return readAll()
 }
+
+func Write(data []byte) (int, error) {
+	return write(data)
+}
+
+var Unsupported bool

@@ -1,15 +1,10 @@
-package main
+//go:build darwin
+
+package pbcopy
 
 import "os/exec"
 
-type DarwinPbCopy struct {
-}
-
-func NewDarwingPbCopy() Copy {
-	return &DarwinPbCopy{}
-}
-
-func (pb *DarwinPbCopy) ReadAll() (string, error) {
+func readAll() (string, error) {
 	out := exec.Command("pbpaste")
 	clip, err := out.Output()
 	if err != nil {
@@ -19,6 +14,6 @@ func (pb *DarwinPbCopy) ReadAll() (string, error) {
 	return string(clip), nil
 }
 
-func (pb *DarwinPbCopy) Write(data string) (int, error) {
+func write(data []byte) (int, error) {
 	return 0, nil
 }
