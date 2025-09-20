@@ -122,7 +122,7 @@ func write(data []byte) (int, error) {
 
 	owner := C.XGetSelectionOwner(d, clipboardAtom)
 	if owner == 0 {
-		return 0, fmt.Errorf("Failed to set clipboard owner")
+		return 0, fmt.Errorf("failed to set clipboard owner")
 	}
 
 	fmt.Println("Clipboard set. Press Ctrl+C to quit.")
